@@ -1,1 +1,79 @@
-// put code here
+@mixin arrow($height, $calc, $animationTime) {
+  position: absolute;
+  width: 5px;
+  height: $height;
+  border: 1px solid #fff;
+  background-color: #ea3548;
+  left: 50%;
+  top: $calc;
+  transform: translate(-50%);
+  transform-origin: bottom center;
+  animation: rotateAnimation $animationTime linear infinite;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #286fff;
+  height: 100vh;
+  margin: 0;
+}
+
+.watch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vmin;
+  height: 80vmin;
+  background-color: #3d3d3d;
+  border-radius: 651px;
+  border: 2px solid #000;
+
+  &__inside {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 346px;
+    height: 346px;
+    border-radius: 346px;
+    background-color: #444;
+  }
+
+  &__middle {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    background-color: #ea3548;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  &__arrow-minute {
+    @include arrow(120px, calc(50% - 120px), 60s);
+  }
+
+  &__arrow-second {
+    @include arrow(220px, calc(50% - 220px), 5s);
+  }
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

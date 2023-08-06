@@ -1,6 +1,6 @@
-@mixin arrow($width, $height, $calc, $animationTime) {
+@mixin arrow($height, $calc, $animationTime) {
   position: absolute;
-  width: $width;
+  width: 5px;
   height: $height;
   border: 1px solid #fff;
   background-color: #ea3548;
@@ -34,7 +34,7 @@ body {
   border-radius: 651px;
   border: 2px solid #000;
 
-  &-inside {
+  &__inside {
     position: relative;
     display: flex;
     justify-content: center;
@@ -60,20 +60,20 @@ body {
   }
 
   &__arrow-minute {
-    @include arrow(5px, 120px, calc(50% - 120px), 60s);
+    @include arrow(120px, calc(50% - 120px), 60s);
   }
 
   &__arrow-second {
-    @include arrow(5px, 220px, calc(50% - 220px), 5s)
+    @include arrow(220px, calc(50% - 220px), 5s);
+  }
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
   }
 
-  @keyframes rotateAnimation {
-    from {
-      transform: rotate(0deg);
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
   }
 }
